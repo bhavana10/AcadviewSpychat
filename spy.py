@@ -95,10 +95,10 @@ def send_a_message():
     print friend_choice
     #name of the image user want to encode the secret message with
     original_image = raw_input("What is the name of the image?")
-    original_image = "C:\Users\Bhavana\Desktop\secret\%s" %(original_image)
+    original_image = "secret\%s" %(original_image)
     output_path = raw_input("Save image as")
     #secret message want to hide
-    output_path = "C:\Users\Bhavana\Desktop\secret\%s" %(output_path)
+    output_path = "secret\%s" %(output_path)
     text = raw_input("What do you want to say? ")
     Steganography.encode(original_image, output_path, text)
     new_chat = ChatMessage(text,True)
@@ -112,7 +112,7 @@ def read_a_message():
     sender = select_a_friend()
     #input the name of the image they want to decode the message from
     output_path = raw_input("What is the name of the file?")
-    output_path = "C:\Users\Bhavana\Desktop\secret\%s" %(output_path)
+    output_path = "secret\%s" %(output_path)
     secret_text = Steganography.decode(output_path)
     new_chat = ChatMessage(secret_text,False)
     #Append the chat message to 'chats' key for the friends
@@ -130,9 +130,9 @@ def read_chat():
     for chat in FRIENDS[friend_choice].chats:
         if chat.sender_is_me:
             #printing Time in Blue, Spy Name in Red, Message in Black
-            print u"[\x1b[34mmy %s \x1b[0m] \x1b[31mmy %s \x1b[0m: %s" %(chat.time.strftime("%d %B %Y"),'Send by you:',chat.message)
+            print u"[\x1b[34mmy %s \x1b[0m] \x1b[31m %s \x1b[0m: %s" %(chat.time.strftime("%d %B %Y"),'Send by you:',chat.message)
         else:
-            print u"[\x1b[34mmy %s \x1b[0m] \x1b[31mmy %s \x1b[0m: %s" % (chat.time.strftime("%d %B %Y"), FRIENDS[friend_choice].name, chat.message)
+            print u"[\x1b[34mmy %s \x1b[0m] \x1b[31m %s \x1b[0m: %s" % (chat.time.strftime("%d %B %Y"), FRIENDS[friend_choice].name, chat.message)
 
 ############################### M E N U #######################################
 def start_chat(spy):
